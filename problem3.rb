@@ -1,4 +1,4 @@
-require './primes.rb'
+require './math_ext.rb'
 def largest_prime_factor(n)
 	primes = SieveOfEra.primes(Math.sqrt(n).floor)
 	primes.reverse_each {|p|
