@@ -12,11 +12,15 @@ class SieveOfEra
 	def self.sum_primes(n)
 		list = (2..n).to_a
 		sum = 0
+		count = 0
+
 		while !list.empty?
 			sum += (prime = list.shift)
+			puts "SO FAR #{sum}, LAST PRIME #{prime}" if count % 500 == 0
+			count += 1
 			list = list.reject {|item| item % prime == 0}
 		end
-		primes
+		sum
 
 	end
 
