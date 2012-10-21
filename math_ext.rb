@@ -39,3 +39,34 @@ end
 def fact(n)
 	(1..n).inject(:*)
 end
+
+class Fibbonacci
+
+	def initialize
+		@cache = [1, 1]
+	end
+
+	def populate_up_to_n(n)
+		while @cache.length < n
+			@cache << (@cache[@cache.length - 2] + @cache[@cache.length - 1])
+		end
+	end
+	
+	def nth(n)	
+		self.populate_up_to_n(n)
+		@cache[n - 1]
+	end
+
+	def first_n(n)
+		self.populate_up_to_n(n)
+		@cache.slice(0, n)
+	end
+end
+
+
+
+
+
+
+
+
