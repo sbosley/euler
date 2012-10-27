@@ -36,6 +36,13 @@ def sum_chars(i)
 	sum
 end
 
+def digits_list(n)
+	str = n.to_s
+	list = []
+	str.each_char {|c| list << c.to_i }
+	list
+end
+
 def fact(n)
 	(1..n).inject(:*)
 end
