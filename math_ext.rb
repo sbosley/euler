@@ -29,6 +29,14 @@ class SieveOfEra
 	end
 end
 
+def factors(n)
+	result = []
+	for i in 1..n
+		result << i if n % i == 0
+	end
+	result
+end
+
 def sum_chars(i)
 	str = i.to_s
 	sum = 0
