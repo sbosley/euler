@@ -11,8 +11,4 @@ object Problem2 {
   def sumEvenFibs: BigInt = {
     Fibonacci.stream.filter( _ % 2 == 0).takeWhile(_ <= 4000000).sum
   }
-
-  def primes(max: BigInt): Seq[BigInt] = {
-
-  }
 }
