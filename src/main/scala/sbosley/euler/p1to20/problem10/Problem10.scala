@@ -1,4 +1,4 @@
-package sbosley.euler.problem10
+package sbosley.euler.p1to20.problem10
 
 import sbosley.euler.math.Primes
 

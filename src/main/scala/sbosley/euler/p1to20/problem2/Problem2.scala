@@ -1,4 +1,4 @@
-package sbosley.euler.problem2
+package sbosley.euler.p1to20.problem2
 
 import sbosley.euler.math.Fibonacci
 

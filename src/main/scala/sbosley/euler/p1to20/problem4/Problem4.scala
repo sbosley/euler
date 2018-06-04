@@ -1,4 +1,4 @@
-package sbosley.euler.problem4
+package sbosley.euler.p1to20.problem4
 
 import sbosley.euler.string.StringExt._
 

@@ -1,4 +1,4 @@
-package sbosley.euler.problem9
+package sbosley.euler.p1to20.problem9
 
 object Problem9 {
 

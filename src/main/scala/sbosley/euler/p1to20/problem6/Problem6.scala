@@ -1,4 +1,4 @@
-package sbosley.euler.problem6
+package sbosley.euler.p1to20.problem6
 
 import sbosley.euler.math.Sequences
 
