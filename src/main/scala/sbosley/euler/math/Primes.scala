@@ -1,21 +1,17 @@
 package sbosley.euler.math
 
+import Ordering.Implicits._
+import Integral.Implicits._
+
 object Primes {
 
-  def primesStream[T : Integral]: Stream[T] = {
+  // Implements trial division -- not the most efficient
+  def primes[T: Integral]: Stream[T] = {
     val integral = implicitly[Integral[T]]
-    val two = integral.plus(integral.one, integral.one)
-    seive(Stream.iterate(two) { a => integral.plus(a, integral.one) })
+    integral.fromInt(2) #:: Stream.iterate(integral.fromInt(3)) { _ + integral.fromInt(2)}.filter(isPrime)
   }
 
-  def primes[T : Integral](max: T): Seq[T] = {
-    val integral = implicitly[Integral[T]]
-    primesStream.takeWhile(a => integral.lteq(a, max))
+  private def isPrime[T : Integral](n: T): Boolean = {
+    primes.takeWhile(p => p * p <= n).forall(n % _ != 0)
   }
-
-  private def seive[T : Integral](stream: Stream[T]): Stream[T] = {
-    val head = stream.head
-    head #:: seive(stream.tail.filter(implicitly[Integral[T]].rem(_, head) != 0))
-  }
-
 }

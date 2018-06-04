@@ -9,7 +9,7 @@ object Problem3 {
   val NUM_TO_FACTOR = 600851475143L
 
   def main(args: Array[String]): Unit = {
-    println(findMaxPrimeFactor(NUM_TO_FACTOR, Primes.primesStream[Long]))
+    println(findMaxPrimeFactor(NUM_TO_FACTOR, Primes.primes[Long]))
   }
 
   @tailrec
