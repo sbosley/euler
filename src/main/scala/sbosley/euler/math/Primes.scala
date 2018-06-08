@@ -2,6 +2,7 @@ package sbosley.euler.math
 
 import Ordering.Implicits._
 import Integral.Implicits._
+import scala.annotation.tailrec
 import scala.collection.mutable
 
 object Primes {
@@ -18,6 +19,26 @@ object Primes {
     }
 
     2 :: (for (i <- indices.indices if indices(i) == 1) yield 2 * i + 1).tail.toList
+  }
+
+  def numDivisors(n: Int): Int = {
+    numDivisorsRecursive(n, 2 #:: Stream.from(3, 2), 1)
+  }
+
+  @tailrec
+  private def numDivisorsRecursive(n: Int, divisorsToCheck: Stream[Int], divisors: Int): Int = {
+    val d = divisorsToCheck.head
+    if (n == 1) divisors
+    else {
+      val (newN, count) = countDDividesN(n, d, 0)
+      numDivisorsRecursive(newN, divisorsToCheck.tail, divisors * (count + 1))
+    }
+  }
+
+  @tailrec
+  private def countDDividesN(n: Int, d: Int, count: Int): (Int, Int) = {
+    if (n % d != 0) (n, count)
+    else countDDividesN(n / d, d, count + 1)
   }
 
   // Implements trial division -- not the most efficient
