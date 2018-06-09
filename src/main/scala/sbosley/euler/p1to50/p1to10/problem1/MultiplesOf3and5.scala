@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p1to10.problem1
 
-object Problem1 {
+object MultiplesOf3and5 {
 
   def main(args: Array[String]): Unit = {
     println(sumTo1000)

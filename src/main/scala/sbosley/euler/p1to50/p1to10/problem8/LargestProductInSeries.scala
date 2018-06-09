@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p1to10.problem8
 
-object Problem8 {
+object LargestProductInSeries {
 
   val DIGITS = """73167176531330624919225119674426574742355349194934
                  |96983520312774506326239578318016984801869478851843

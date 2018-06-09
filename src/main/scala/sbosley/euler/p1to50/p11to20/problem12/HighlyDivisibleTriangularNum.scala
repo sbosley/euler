@@ -4,7 +4,7 @@ import sbosley.euler.math.Primes
 
 import scala.collection.mutable
 
-object Problem12 {
+object HighlyDivisibleTriangularNum {
 
   private val memoizedDivisors = mutable.Map[Int, Int]()
 

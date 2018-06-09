@@ -1,8 +1,8 @@
 package sbosley.euler.p1to50.p1to10.problem6
 
-import sbosley.euler.math.Sequences
+import sbosley.euler.math.MathHelpers
 
-object Problem6 {
+object SumSquareDifference {
 
   val N = 100
 
@@ -15,7 +15,7 @@ object Problem6 {
   }
 
   def squareOfSum(n: Int): Int = {
-    val sum = Sequences.sumToN(n)
+    val sum = MathHelpers.sumToN(n)
     sum * sum
   }
 

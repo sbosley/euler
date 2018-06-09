@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p11to20.problem17
 
-object Problem17 {
+object NumberLetterCounts {
 
   def main(args: Array[String]): Unit = {
     println((1 to 1000).map(numberToWord(_).length).sum)

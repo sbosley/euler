@@ -2,7 +2,7 @@ package sbosley.euler.p1to50.p1to10.problem4
 
 import sbosley.euler.string.StringExt._
 
-object Problem4 {
+object LargestPalindromeProduct {
 
   def main(args: Array[String]): Unit = {
     println(findMaxPalindromeProduct)

@@ -2,7 +2,7 @@ package sbosley.euler.p1to50.p1to10.problem5
 
 import sbosley.euler.math.Primes
 
-object Problem5 {
+object SmallestMultiple {
 
   def main(args: Array[String]): Unit = {
     println(productDivisibleBy1to20)

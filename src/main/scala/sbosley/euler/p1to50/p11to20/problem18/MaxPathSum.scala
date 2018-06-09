@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p11to20.problem18
 
-object Problem18 {
+object MaxPathSum {
 
   val rows: Seq[Seq[Int]] =
              """75

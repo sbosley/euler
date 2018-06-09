@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p1to10.problem9
 
-object Problem9 {
+object SpecialPythagoreanTriplet {
 
   def main(args: Array[String]): Unit = {
     // Euclid's formula: a = m^2 - n^2, b=2mn, c=m^2 + n^2 form a pythagorean triple for any m, n where m > n > 0

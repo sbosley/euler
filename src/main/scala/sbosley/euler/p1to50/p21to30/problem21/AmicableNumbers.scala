@@ -2,7 +2,7 @@ package sbosley.euler.p1to50.p21to30.problem21
 
 import sbosley.euler.math.Primes
 
-object Problem21 {
+object AmicableNumbers {
 
   def main(args: Array[String]): Unit = {
     val sumAmicables = (3 to 10000).foldLeft(Set.empty[Int]) { case (amicables, n) =>

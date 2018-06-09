@@ -2,7 +2,7 @@ package sbosley.euler.p1to50.p11to20.problem15
 
 import scala.collection.mutable
 
-object Problem15 {
+object LatticePaths {
 
   private val memoized = mutable.Map[(Int, Int), Long]()
 

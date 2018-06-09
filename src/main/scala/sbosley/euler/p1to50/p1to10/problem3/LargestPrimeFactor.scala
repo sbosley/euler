@@ -4,7 +4,7 @@ import sbosley.euler.math.Primes
 
 import scala.annotation.tailrec
 
-object Problem3 {
+object LargestPrimeFactor {
 
   val NUM_TO_FACTOR = 600851475143L
 

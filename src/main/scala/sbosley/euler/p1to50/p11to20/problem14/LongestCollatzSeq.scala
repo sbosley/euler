@@ -2,7 +2,7 @@ package sbosley.euler.p1to50.p11to20.problem14
 
 import scala.collection.mutable
 
-object Problem14 {
+object LongestCollatzSeq {
 
   private val memoizedLengths = mutable.Map[Long, Long]()
   memoizedLengths += 1L -> 1L

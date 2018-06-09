@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p11to20.problem20
 
-object Problem20 {
+object FactorialDigitSum {
 
   def main(args: Array[String]): Unit = {
     println(sumFactorialDigits(100))

@@ -1,10 +1,8 @@
 package sbosley.euler.p1to50.p21to30.problem22
 
-import java.io.File
-
 import scala.io.Source
 
-object Problem22 {
+object NameScores {
 
   def main(args: Array[String]): Unit = {
     // Replaced commas with newlines:
