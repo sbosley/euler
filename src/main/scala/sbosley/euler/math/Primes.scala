@@ -7,7 +7,7 @@ import scala.collection.mutable
 
 object Primes {
 
-  def primesToMax(max: Int): Seq[Int] = {
+  def primesToMax(max: Int): List[Int] = {
     // Indices representing (1, 3, 5, 7, 9, ...)
     val indices = mutable.ArrayBuffer.fill((max + 1) / 2)(1)
 
@@ -21,15 +21,29 @@ object Primes {
     2 :: (for (i <- indices.indices if indices(i) == 1) yield 2 * i + 1).tail.toList
   }
 
+  def properDivisors(n: Int): Set[Int] = {
+    val divisors = Set(1)
+    val primes = primesToMax(n)
+    computeDivisorsRecursive(n, primes, divisors) - n
+  }
+
+  @tailrec
+  private def computeDivisorsRecursive(n: Int, primes: List[Int], divisors: Set[Int]): Set[Int] = {
+    val p = primes.head
+    if (n == 1) divisors
+    else if (n % p == 0) computeDivisorsRecursive(n / p, primes, divisors ++ divisors.map(_ * p))
+    else computeDivisorsRecursive(n, primes.tail, divisors)
+  }
+
   def numDivisors(n: Int): Int = {
     numDivisorsRecursive(n, 2 #:: Stream.from(3, 2), 1)
   }
 
   @tailrec
-  private def numDivisorsRecursive(n: Int, divisorsToCheck: Stream[Int], divisors: Int): Int = {
-    val d = divisorsToCheck.head
+  private def numDivisorsRecursive(n: Int, divisorsToCheck: Seq[Int], divisors: Int): Int = {
     if (n == 1) divisors
     else {
+      val d = divisorsToCheck.head
       val (newN, count) = countDDividesN(n, d, 0)
       numDivisorsRecursive(newN, divisorsToCheck.tail, divisors * (count + 1))
     }
