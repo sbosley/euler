@@ -12,5 +12,9 @@ object StringExt {
       else if (s.charAt(0) != s.charAt(s.length - 1)) false
       else s.substring(1, s.length - 1).isPalindrome
     }
+
+    def rotate(n: Int): String = {
+      s.substring(n) + s.substring(0, n)
+    }
   }
 }

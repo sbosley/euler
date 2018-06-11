@@ -18,19 +18,25 @@ object Primes {
       }
     }
 
-    2 :: (for (i <- indices.indices if indices(i) == 1) yield 2 * i + 1).tail.toList
+    val rest = for (i <- indices.indices if indices(i) == 1) yield 2 * i + 1
+    if (rest.isEmpty) List(2, 3)
+    else 2 :: rest.tail.toList
+  }
+
+  def allDivisors(n: Int): Set[Int] = {
+    val divisors = Set(1)
+    val primes = primesToMax(n)
+    computeDivisorsRecursive(n, primes, divisors)
   }
 
   def properDivisors(n: Int): Set[Int] = {
-    val divisors = Set(1)
-    val primes = primesToMax(n)
-    computeDivisorsRecursive(n, primes, divisors) - n
+    allDivisors(n) - n
   }
 
   @tailrec
   private def computeDivisorsRecursive(n: Int, primes: List[Int], divisors: Set[Int]): Set[Int] = {
     val p = primes.head
-    if (n == 1) divisors
+    if (n == 0 || n == 1) divisors
     else if (n % p == 0) computeDivisorsRecursive(n / p, primes, divisors ++ divisors.map(_ * p))
     else computeDivisorsRecursive(n, primes.tail, divisors)
   }
