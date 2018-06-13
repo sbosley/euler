@@ -11,6 +11,13 @@ object MathHelpers {
     (n * (n + integral.one)) / integral.fromInt(2)
   }
 
+  // Finds solutions to an^2 + bn + c
+  def quadraticFormula(a: Double, b: Double, c: Double): (Double, Double) = {
+    // (-b +/- sqrt(b^2 - 4ac) / 2a)
+    val sqrtTerm = Math.sqrt(b * b - 4 * a * c)
+    ((-b + sqrtTerm) / 2 * a, (-b - sqrtTerm) / 2 * a)
+  }
+
   def factorial(n: Long): Long = {
     if (n == 0 || n == 1) 1
     else n * factorial(n - 1)
