@@ -13,6 +13,10 @@ object StringExt {
       else s.substring(1, s.length - 1).isPalindrome
     }
 
+    def isPermutation(other: String): Boolean = {
+      s.sorted == other.sorted
+    }
+
     def rotate(n: Int): String = {
       s.substring(n) + s.substring(0, n)
     }

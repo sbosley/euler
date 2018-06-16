@@ -26,7 +26,7 @@ object LexographicPermutations {
       val nextDigitIndex = remainingDigits.indices
         .find(i => (i + 1) * permutationsLeftAfterNextDigit + permutationsSoFar >= n)
         .getOrElse(0)
-      val newPermutationCount = permutationsSoFar + (nextDigitIndex * permutationsLeftAfterNextDigit)
+      val newPermutationCount = permutationsSoFar + (nextDigitIndex * permutationsLeftAfterNextDigit.toLong)
       nthPermutationRecursive(n, digitsUsed + remainingDigits(nextDigitIndex), newPermutationCount)
     }
   }
