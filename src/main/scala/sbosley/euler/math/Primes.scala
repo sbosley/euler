@@ -33,6 +33,21 @@ object Primes {
     allDivisors(n) - n
   }
 
+  def primeFactors(n: Int, cachedPrimes: Option[List[Int]] = None): Map[Int, Int] = {
+    val primes = cachedPrimes.getOrElse(primesToMax(n))
+    computePrimeFactorsRecursive(n, primes, Map.empty)
+  }
+
+  @tailrec
+  private def computePrimeFactorsRecursive(n: Int, primes: List[Int], primeFactorization: Map[Int, Int]): Map[Int, Int] = {
+    val p = primes.head
+    if (n == 0 || n == 1) primeFactorization
+    else if (n % p == 0) {
+      val (newN, primeFactorCount) = countDDividesN(n, p, 0)
+      computePrimeFactorsRecursive(newN, primes.tail, primeFactorization + (p -> primeFactorCount))
+    } else computePrimeFactorsRecursive(n, primes.tail, primeFactorization)
+  }
+
   @tailrec
   private def computeDivisorsRecursive(n: Int, primes: List[Int], divisors: Set[Int]): Set[Int] = {
     val p = primes.head
