@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p11to20.problem18
 
-object MaxPathSum {
+object MaximumPathSum {
 
   val rows: Seq[Seq[Int]] =
              """75
@@ -22,12 +22,15 @@ object MaxPathSum {
     .map(_.split(" ").map(_.toInt).toSeq).toSeq.reverse
 
   def main(args: Array[String]): Unit = {
-    val baseSum = Array.fill(rows.head.length + 1)(0).toSeq
-    val maxPathSum = rows.fold(baseSum) { (maxPathSums, newPath) =>
+    println(maxPathSum(rows))
+  }
+
+  def maxPathSum(triangle: Seq[Seq[Int]]): Int = {
+    val baseSum = Array.fill(triangle.head.length + 1)(0).toSeq
+    triangle.fold(baseSum) { (maxPathSums, newPath) =>
       newPath.zipWithIndex.map { case (value, index) =>
         Math.max(value + maxPathSums(index), value + maxPathSums(index + 1))
       }
-    }
-    println(maxPathSum)
+    }.head
   }
 }

@@ -33,7 +33,7 @@ object MathHelpers {
     (builder += Set.empty).toSet
   }
 
-  case class Fraction(num: BigInt, den: BigInt) {
+  case class Fraction(num: BigInt, den: BigInt) extends Ordered[Fraction] {
 
     override def toString: String = s"$num / $den"
 
@@ -42,6 +42,12 @@ object MathHelpers {
     def reduce: Fraction = {
       val divisor = gcd(num, den)
       Fraction(num / divisor, den / divisor)
+    }
+
+    override def compare(that: Fraction): Int = {
+      val newNum = num * that.den
+      val otherNewNum = that.num * den
+      newNum.compareTo(otherNewNum)
     }
   }
 
