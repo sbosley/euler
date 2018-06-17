@@ -2,6 +2,7 @@ package sbosley.euler.math
 
 import Integral.Implicits._
 import scala.annotation.tailrec
+import scala.collection.mutable
 
 object MathHelpers {
 
@@ -14,6 +15,34 @@ object MathHelpers {
 
   def factorial(n: Long): BigInt = {
     factorialRecursive(n, 1)
+  }
+
+  @tailrec
+  def gcd[T : Integral](a: T, b: T): T = {
+    if (b == implicitly[Integral[T]].zero) a
+    else gcd(b, a % b)
+  }
+
+  def powerset[T](s: Set[T]): Set[Set[T]] = {
+    val builder = s.foldLeft(mutable.Set[Set[T]]()) { (builder, item) =>
+      builder.foldLeft(builder) { (b, subset) =>
+        b += subset + item
+      }
+      builder += Set(item)
+    }
+    (builder += Set.empty).toSet
+  }
+
+  case class Fraction(num: BigInt, den: BigInt) {
+
+    override def toString: String = s"$num / $den"
+
+    def +(n: Int): Fraction = Fraction(n * den + num, den)
+    def invert: Fraction = Fraction(den, num)
+    def reduce: Fraction = {
+      val divisor = gcd(num, den)
+      Fraction(num / divisor, den / divisor)
+    }
   }
 
   @tailrec

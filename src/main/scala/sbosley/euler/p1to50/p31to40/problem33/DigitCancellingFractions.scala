@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p31to40.problem33
 
-import sbosley.euler.math.Primes
+import sbosley.euler.math.MathHelpers.Fraction
 
 object DigitCancellingFractions {
 
@@ -9,8 +9,7 @@ object DigitCancellingFractions {
     val (productA, productB) = fractions.foldLeft((1, 1)) { case ((prodNum, prodDenom), (a, b)) =>
       (prodNum * a, prodDenom * b)
     }
-    val (reducedA, reducedB) = reduceFraction(productA, productB)
-    println(s"$reducedA / $reducedB")
+    println(s"${Fraction(productA, productB).reduce}")
     // 16 / 64
     // 26 / 65
     // 19 / 95
@@ -40,16 +39,7 @@ object DigitCancellingFractions {
       val intersectDigit = charIntersection.head
       val fakeReducedA = (aChars - intersectDigit).headOption.getOrElse(intersectDigit).asDigit
       val fakeReducedB = (bChars - intersectDigit).headOption.getOrElse(intersectDigit).asDigit
-      reduceFraction(a, b) == reduceFraction(fakeReducedA, fakeReducedB)
-    }
-  }
-
-  def reduceFraction(num: Int, den: Int): (Int, Int) = {
-    val divisors = (Primes.allDivisors(num) - 1).toList.sorted.reverse
-    if (divisors.isEmpty) (num, den)
-    else divisors.foldLeft((num, den)) { case ((a, b), div) =>
-      if (a != 0 && b != 0 && a % div == 0 && b % div == 0) (a / div, b / div)
-      else (a, b)
+      Fraction(a, b).reduce == Fraction(fakeReducedA, fakeReducedB).reduce
     }
   }
 
