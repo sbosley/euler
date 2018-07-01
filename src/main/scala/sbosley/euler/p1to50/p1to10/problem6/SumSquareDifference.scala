@@ -15,7 +15,7 @@ object SumSquareDifference {
   }
 
   def squareOfSum(n: Int): Int = {
-    val sum = MathHelpers.sumToN(n)
+    val sum = MathHelpers.triangleNumber(n)
     sum * sum
   }
 

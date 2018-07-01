@@ -27,7 +27,7 @@ object TriangularPentagonalHexagonal {
     maybeSolutions.exists(x => triangular(x) == n)
   }
 
-  private def triangular(x: Long): Long = MathHelpers.sumToN(x)
+  private def triangular(x: Long): Long = MathHelpers.triangleNumber(x)
   private def pentagonal(x: Long): Long = x * (3 * x - 1) / 2
   private def hexagonal(x: Long): Long = x * (2 * x - 1)
 

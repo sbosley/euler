@@ -8,9 +8,33 @@ object MathHelpers {
 
   val FIBONACCI_STREAM: Stream[BigInt] = BigInt(0) #:: BigInt(1) #:: FIBONACCI_STREAM.zip(FIBONACCI_STREAM.tail).map { n => n._1 + n._2 }
 
-  def sumToN[T : Integral](n: T): T = {
+  def triangleNumber[T : Integral](n: T): T = {
     val integral = implicitly[Integral[T]]
     (n * (n + integral.one)) / integral.fromInt(2)
+  }
+
+  def squareNumber[T : Integral](n: T): T = {
+    n * n
+  }
+
+  def pentagonalNumber[T : Integral](n: T): T = {
+    val integral = implicitly[Integral[T]]
+    (n * (integral.fromInt(3) * n - integral.one)) / integral.fromInt(2)
+  }
+
+  def hexagonalNumber[T : Integral](n: T): T = {
+    val integral = implicitly[Integral[T]]
+    n * (integral.fromInt(2) * n - integral.one)
+  }
+
+  def heptagonalNumber[T : Integral](n: T): T = {
+    val integral = implicitly[Integral[T]]
+    (n * (integral.fromInt(5) * n - integral.fromInt(3))) / integral.fromInt(2)
+  }
+
+  def octagonalNumber[T : Integral](n: T): T = {
+    val integral = implicitly[Integral[T]]
+    n * (integral.fromInt(3) * n - integral.fromInt(2))
   }
 
   def factorial(n: Long): BigInt = {
