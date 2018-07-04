@@ -61,7 +61,12 @@ object MathHelpers {
 
     override def toString: String = s"$num / $den"
 
-    def +(n: Int): Fraction = Fraction(n * den + num, den)
+    def +(n: Int): Fraction = Fraction(n * den + num, den).reduce
+    def +(f: Fraction): Fraction = {
+      val commonDenom = den * f.den
+      val newNum = (num * f.den) + (f.num * den)
+      Fraction(newNum, commonDenom).reduce
+    }
     def invert: Fraction = Fraction(den, num)
     def reduce: Fraction = {
       val divisor = gcd(num, den)
