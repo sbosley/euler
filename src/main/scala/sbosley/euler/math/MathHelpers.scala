@@ -81,6 +81,10 @@ object MathHelpers {
     else factorialRecursive(n - 1, acc * n)
   }
 
+  def isSquare(n: Long): Boolean = {
+    quadraticFormulaIntegers(1L, 0L, -n).nonEmpty
+  }
+
   // Finds solutions to an^2 + bn + c
   def quadraticFormula(a: Double, b: Double, c: Double): (Double, Double) = {
     // (-b +/- sqrt(b^2 - 4ac) / 2a)
