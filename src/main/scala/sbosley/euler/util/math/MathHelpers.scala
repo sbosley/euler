@@ -103,4 +103,17 @@ object MathHelpers {
     Set(sol1.toLong + 1, sol1.toLong, sol1.toLong - 1, sol2.toLong + 1, sol2.toLong, sol2.toLong - 1)
       .filter(x => a * x * x + b * x + c == 0)
   }
+
+  // Euler's product formula: phi(n) = n * (primeFactors(n).map(p => 1 - 1 / p)).product
+  def totient(n: Int, cachedPrimes: Option[List[Int]] = None): Int = {
+    val primeFactors = Primes.primeFactors(n, cachedPrimes)
+    val fractions = primeFactors.keySet.map(p => Fraction(p - 1, p))
+    totientFromProduct(n, fractions)
+  }
+
+  private def totientFromProduct(n: Int, fSeq: Set[Fraction]): Int = {
+    fSeq.foldLeft(Fraction(n, 1)) { (acc, f) =>
+      Fraction(acc.num * f.num, acc.den * f.den)
+    }.reduce.num.toInt
+  }
 }
