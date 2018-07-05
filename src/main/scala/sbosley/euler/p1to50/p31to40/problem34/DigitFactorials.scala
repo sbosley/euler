@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p31to40.problem34
 
-import sbosley.euler.math.MathHelpers
+import sbosley.euler.util.math.MathHelpers
 
 object DigitFactorials {
 

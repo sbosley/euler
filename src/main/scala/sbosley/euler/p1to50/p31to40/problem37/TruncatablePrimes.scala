@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p31to40.problem37
 
-import sbosley.euler.math.Primes
+import sbosley.euler.util.math.Primes
 
 object TruncatablePrimes {
 

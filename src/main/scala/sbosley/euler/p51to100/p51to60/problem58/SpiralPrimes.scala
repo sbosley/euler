@@ -1,7 +1,7 @@
 package sbosley.euler.p51to100.p51to60.problem58
 
-import sbosley.euler.math.MathHelpers.Fraction
-import sbosley.euler.math.Primes
+import sbosley.euler.util.math.MathHelpers.Fraction
+import sbosley.euler.util.math.Primes
 
 import scala.annotation.tailrec
 

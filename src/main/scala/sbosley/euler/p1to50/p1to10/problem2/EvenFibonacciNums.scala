@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p1to10.problem2
 
-import sbosley.euler.math.MathHelpers
+import sbosley.euler.util.math.MathHelpers
 
 object EvenFibonacciNums {
 

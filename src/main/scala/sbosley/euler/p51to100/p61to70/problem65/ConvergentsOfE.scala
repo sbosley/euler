@@ -1,14 +1,12 @@
 package sbosley.euler.p51to100.p61to70.problem65
 
-import sbosley.euler.math.MathHelpers.Fraction
+import sbosley.euler.util.math.PeriodicFractions.ConvergentFraction
 
 object ConvergentsOfE {
 
   def main(args: Array[String]): Unit = {
-    val eFractions = 1 :: 2 :: Stream.from(2).flatMap(i => Seq(1, 1, 2 * i)).take(97).toList
-    val convergent = eFractions.foldRight(Fraction(1, 0)) { (i, fraction) =>
-      fraction.invert + i
-    }.invert + 2
+    val convergent = ConvergentFraction(2, 1 #:: 2 #:: Stream.from(2).flatMap(i => Seq(1, 1, 2 * i)), None)
+      .evalToPrecision(99)
     println(convergent)
     println(convergent.num.toString.map(_.asDigit).sum)
   }

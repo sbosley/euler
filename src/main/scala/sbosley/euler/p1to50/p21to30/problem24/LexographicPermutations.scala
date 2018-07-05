@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p21to30.problem24
 
-import sbosley.euler.math.MathHelpers
+import sbosley.euler.util.math.MathHelpers
 
 import scala.annotation.tailrec
 

@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p1to10.problem7
 
-import sbosley.euler.math.Primes
+import sbosley.euler.util.math.Primes
 
 object TenThousanthAndFirstPrime {
 

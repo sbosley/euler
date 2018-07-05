@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p21to30.problem27
 
-import sbosley.euler.math.Primes
+import sbosley.euler.util.math.Primes
 
 object QuadraticPrimes {
 

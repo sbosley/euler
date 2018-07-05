@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p31to40.problem33
 
-import sbosley.euler.math.MathHelpers.Fraction
+import sbosley.euler.util.math.MathHelpers.Fraction
 
 object DigitCancellingFractions {
 

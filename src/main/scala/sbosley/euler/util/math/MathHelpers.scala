@@ -1,4 +1,4 @@
-package sbosley.euler.math
+package sbosley.euler.util.math
 
 import Integral.Implicits._
 import scala.annotation.tailrec

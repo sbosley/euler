@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p11to20.problem12
 
-import sbosley.euler.math.Primes
+import sbosley.euler.util.math.Primes
 
 import scala.collection.mutable
 

@@ -1,4 +1,4 @@
-package sbosley.euler.string
+package sbosley.euler.util.string
 
 import scala.annotation.tailrec
 import scala.collection.mutable

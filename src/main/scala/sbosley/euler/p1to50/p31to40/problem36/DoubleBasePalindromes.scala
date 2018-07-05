@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p31to40.problem36
 
-import sbosley.euler.string.StringExt._
+import sbosley.euler.util.string.StringExt._
 
 object DoubleBasePalindromes {
 

@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p41to50.problem49
 
-import sbosley.euler.math.Primes
+import sbosley.euler.util.math.Primes
 
 object PrimePermutations {
 

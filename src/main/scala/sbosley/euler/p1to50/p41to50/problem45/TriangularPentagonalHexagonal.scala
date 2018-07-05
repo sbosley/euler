@@ -1,6 +1,6 @@
 package sbosley.euler.p1to50.p41to50.problem45
 
-import sbosley.euler.math.MathHelpers
+import sbosley.euler.util.math.MathHelpers
 
 object TriangularPentagonalHexagonal {
 

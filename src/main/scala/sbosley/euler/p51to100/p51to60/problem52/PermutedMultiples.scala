@@ -1,6 +1,6 @@
 package sbosley.euler.p51to100.p51to60.problem52
 
-import sbosley.euler.string.StringExt._
+import sbosley.euler.util.string.StringExt._
 
 object PermutedMultiples {
 

@@ -1,6 +1,6 @@
 package sbosley.euler.p51to100.p61to70.problem61
 
-import sbosley.euler.math.MathHelpers._
+import sbosley.euler.util.math.MathHelpers._
 
 import scala.collection.mutable
 

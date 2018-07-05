@@ -1,4 +1,4 @@
-package sbosley.euler.math
+package sbosley.euler.util.math
 
 import Ordering.Implicits._
 import Integral.Implicits._

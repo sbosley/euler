@@ -1,8 +1,8 @@
 package sbosley.euler.p1to50.p31to40.problem35
 
 
-import sbosley.euler.string.StringExt._
-import sbosley.euler.math.Primes
+import sbosley.euler.util.string.StringExt._
+import sbosley.euler.util.math.Primes
 
 object CircularPrimes {
 
