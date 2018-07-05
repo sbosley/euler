@@ -1,7 +1,5 @@
 package sbosley.euler.util.math
 
-import sbosley.euler.util.math.MathHelpers.Fraction
-
 import scala.annotation.tailrec
 
 object PeriodicFractions {

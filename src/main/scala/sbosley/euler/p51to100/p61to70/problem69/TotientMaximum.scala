@@ -1,6 +1,6 @@
 package sbosley.euler.p51to100.p61to70.problem69
 
-import sbosley.euler.util.math.MathHelpers.Fraction
+import sbosley.euler.util.math.Fraction
 import sbosley.euler.util.math.{MathHelpers, Primes}
 
 object TotientMaximum {

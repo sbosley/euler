@@ -1,6 +1,6 @@
 package sbosley.euler.p51to100.p51to60.problem57
 
-import sbosley.euler.util.math.MathHelpers.Fraction
+import sbosley.euler.util.math.Fraction
 
 object SquareRootConvergents {
 

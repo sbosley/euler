@@ -57,29 +57,6 @@ object MathHelpers {
     (builder += Set.empty).toSet
   }
 
-  case class Fraction(num: BigInt, den: BigInt) extends Ordered[Fraction] {
-
-    override def toString: String = s"$num / $den"
-
-    def +(n: Int): Fraction = Fraction(n * den + num, den).reduce
-    def +(f: Fraction): Fraction = {
-      val commonDenom = den * f.den
-      val newNum = (num * f.den) + (f.num * den)
-      Fraction(newNum, commonDenom).reduce
-    }
-    def invert: Fraction = Fraction(den, num)
-    def reduce: Fraction = {
-      val divisor = gcd(num, den)
-      Fraction(num / divisor, den / divisor)
-    }
-
-    override def compare(that: Fraction): Int = {
-      val newNum = num * that.den
-      val otherNewNum = that.num * den
-      newNum.compareTo(otherNewNum)
-    }
-  }
-
   @tailrec
   private def factorialRecursive(n: Long, acc: BigInt): BigInt = {
     if (n == 1) acc
@@ -112,8 +89,6 @@ object MathHelpers {
   }
 
   private def totientFromProduct(n: Int, fSeq: Set[Fraction]): Int = {
-    fSeq.foldLeft(Fraction(n, 1)) { (acc, f) =>
-      Fraction(acc.num * f.num, acc.den * f.den)
-    }.reduce.num.toInt
+    (fSeq.product * n).reduce.num.toInt
   }
 }

@@ -1,7 +1,7 @@
 package sbosley.euler.p51to100.p61to70.problem66
 
 import sbosley.euler.util.math.{MathHelpers, PeriodicFractions}
-import sbosley.euler.util.math.MathHelpers.Fraction
+import sbosley.euler.util.math.Fraction
 
 object DiophantineEquation {
 
@@ -23,7 +23,7 @@ object DiophantineEquation {
     Stream.from(1).map(i => convergent.evalToPrecision(i)).find(f => solvesDiophantine(n, f)).get
   }
 
-  private def solvesDiophantine(n: Int, f: MathHelpers.Fraction): Boolean = {
+  private def solvesDiophantine(n: Int, f: Fraction): Boolean = {
     f.num * f.num - n * f.den * f.den == 1
   }
 
