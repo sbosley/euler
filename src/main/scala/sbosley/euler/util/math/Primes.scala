@@ -65,13 +65,13 @@ object Primes {
     if (n == 1) divisors
     else {
       val d = divisorsToCheck.head
-      val (newN, count) = countDDividesN(n, d, 0)
+      val (newN, count) = countDDividesN(n, d)
       numDivisorsRecursive(newN, divisorsToCheck.tail, divisors * (count + 1))
     }
   }
 
   @tailrec
-  private def countDDividesN(n: Int, d: Int, count: Int): (Int, Int) = {
+  def countDDividesN(n: Int, d: Int, count: Int = 0): (Int, Int) = {
     if (n % d != 0) (n, count)
     else countDDividesN(n / d, d, count + 1)
   }

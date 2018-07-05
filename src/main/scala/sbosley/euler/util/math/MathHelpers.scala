@@ -89,6 +89,7 @@ object MathHelpers {
   }
 
   private def totientFromProduct(n: Int, fSeq: Set[Fraction]): Int = {
-    (fSeq.product * n).reduce.num.toInt
+    import Numeric.Implicits._
+    (fSeq.product * n).toInt()
   }
 }
