@@ -12,7 +12,6 @@ object CountingFractions {
 
   private val MAX_N = 1000000
   private val primes = Primes.primesToMax(MAX_N + 100)
-  private val primesSet = primes.toSet
 
   def main(args: Array[String]): Unit = {
     val seqSize = (1 to MAX_N).map(n => BigInt(MathHelpers.totient(n, Some(primes)))).sum - 1

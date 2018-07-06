@@ -47,6 +47,16 @@ object MathHelpers {
     else gcd(b, a % b)
   }
 
+  def lcm[T : Integral](a: T, b: T): T = {
+    (a / gcd(a, b)) * b
+  }
+
+  def lcm[T : Integral](items: List[T]): T = {
+    items.foldLeft(implicitly[Integral[T]].one) { (lcmAcc, n) =>
+      lcm(lcmAcc, n)
+    }
+  }
+
   def powerset[T](s: Set[T]): Set[Set[T]] = {
     val builder = s.foldLeft(mutable.Set[Set[T]]()) { (builder, item) =>
       builder.foldLeft(builder) { (b, subset) =>
