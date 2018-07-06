@@ -23,9 +23,9 @@ object Primes {
     else 2 :: rest.tail.toList
   }
 
-  def allDivisors(n: Int): Set[Int] = {
+  def allDivisors(n: Int, cachedPrimes: Option[List[Int]] = None): Set[Int] = {
     val divisors = Set(1)
-    val primes = primesToMax(n)
+    val primes = cachedPrimes.getOrElse(primesToMax(n))
     computeDivisorsRecursive(n, primes, divisors)
   }
 
