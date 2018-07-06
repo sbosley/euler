@@ -69,7 +69,7 @@ object MathHelpers {
 
   @tailrec
   private def factorialRecursive(n: Long, acc: BigInt): BigInt = {
-    if (n == 1) acc
+    if (n == 0 || n == 1) acc
     else factorialRecursive(n - 1, acc * n)
   }
 
