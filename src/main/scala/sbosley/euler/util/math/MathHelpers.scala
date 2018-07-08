@@ -42,6 +42,12 @@ object MathHelpers {
   }
 
   @tailrec
+  private def factorialRecursive(n: Long, acc: BigInt): BigInt = {
+    if (n == 0 || n == 1) acc
+    else factorialRecursive(n - 1, acc * n)
+  }
+
+  @tailrec
   def gcd[T : Integral](a: T, b: T): T = {
     if (b == implicitly[Integral[T]].zero) a
     else gcd(b, a % b)
@@ -65,12 +71,6 @@ object MathHelpers {
       builder += Set(item)
     }
     (builder += Set.empty).toSet
-  }
-
-  @tailrec
-  private def factorialRecursive(n: Long, acc: BigInt): BigInt = {
-    if (n == 0 || n == 1) acc
-    else factorialRecursive(n - 1, acc * n)
   }
 
   def isSquare(n: Long): Boolean = {

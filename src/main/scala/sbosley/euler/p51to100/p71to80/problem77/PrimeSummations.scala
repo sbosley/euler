@@ -2,6 +2,7 @@ package sbosley.euler.p51to100.p71to80.problem77
 
 import sbosley.euler.util.math.Primes
 
+import scala.annotation.tailrec
 import scala.collection.immutable.Queue
 import scala.collection.mutable
 
@@ -32,6 +33,7 @@ object PrimeSummations {
     })(collection.breakOut)
   }
 
+  @tailrec
   private def searchPartitionTree(queuedPartitions: Queue[Partition], seenPartitions: mutable.Set[Partition]): Set[Partition] = {
     if (queuedPartitions.isEmpty) seenPartitions.toSet
     else {
