@@ -29,8 +29,8 @@ object Primes {
     computeDivisorsRecursive(n, primes, divisors)
   }
 
-  def properDivisors(n: Int): Set[Int] = {
-    allDivisors(n) - n
+  def properDivisors(n: Int, cachedPrimes: Option[List[Int]] = None): Set[Int] = {
+    allDivisors(n, cachedPrimes) - n
   }
 
   def primeFactors(n: Int, cachedPrimes: Option[List[Int]] = None): Map[Int, Int] = {
