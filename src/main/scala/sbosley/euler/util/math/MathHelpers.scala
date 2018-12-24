@@ -77,6 +77,10 @@ object MathHelpers {
     quadraticFormulaIntegers(1L, 0L, -n).nonEmpty
   }
 
+  def integerSquareRoot(n: Long): Option[Long] = {
+    quadraticFormulaIntegers(1L, 0L, -n).find(_ > 0)
+  }
+
   // Finds solutions to an^2 + bn + c
   def quadraticFormula(a: Double, b: Double, c: Double): (Double, Double) = {
     // (-b +/- sqrt(b^2 - 4ac) / 2a)
@@ -89,6 +93,28 @@ object MathHelpers {
     val (sol1, sol2) = quadraticFormula(a, b, c)
     Set(sol1.toLong + 1, sol1.toLong, sol1.toLong - 1, sol2.toLong + 1, sol2.toLong, sol2.toLong - 1)
       .filter(x => a * x * x + b * x + c == 0)
+  }
+
+  def bigIntSqrt(n: BigInt): Option[BigInt] = {
+    bigIntSqrtInternal(1, n / 2, n)
+  }
+
+  @tailrec
+  private def bigIntSqrtInternal(lowerBound: BigInt, upperBound: BigInt, target: BigInt): Option[BigInt] = {
+    if (upperBound >= lowerBound) {
+      val mid = (upperBound + lowerBound) / 2
+      val midSquare = mid * mid
+      if (midSquare == target) {
+        Some(mid)
+      } else if (midSquare > target) {
+        bigIntSqrtInternal(lowerBound, mid - 1, target)
+      } else {
+        bigIntSqrtInternal(lowerBound + 1, upperBound, target)
+      }
+    } else {
+      val maybeAnswer = lowerBound - 1
+      if (maybeAnswer * maybeAnswer == target) Some(maybeAnswer) else None
+    }
   }
 
   // Euler's product formula: phi(n) = n * (primeFactors(n).map(p => 1 - 1 / p)).product

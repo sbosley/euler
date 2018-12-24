@@ -9,6 +9,8 @@ case class Fraction(num: BigInt, den: BigInt) {
   import Numeric.Implicits._
   def +(n: Int): Fraction = this + Fraction.intToFraction(n)
   def *(n: Int): Fraction = this * Fraction.intToFraction(n)
+  def +(n: Long): Fraction = this + Fraction.longToFraction(n)
+  def *(n: Long): Fraction = this * Fraction.longToFraction(n)
   def invert: Fraction = Fraction(den, num)
   def reduce: Fraction = {
     val divisor = gcd(num.abs, den)
@@ -18,40 +20,52 @@ case class Fraction(num: BigInt, den: BigInt) {
 
 object Fraction {
 
-    implicit def intToFraction(n: Int): Fraction = Fraction(n, 1)
-    implicit def longToFraction(n: Long): Fraction = Fraction(n, 1)
+  implicit def intToFraction(n: Int): Fraction = Fraction(n, 1)
+  implicit def longToFraction(n: Long): Fraction = Fraction(n, 1)
 
-    implicit val fractionIsNumeric: Numeric[Fraction] = new Numeric[Fraction] {
-      override def plus(x: Fraction, y: Fraction): Fraction = {
-        val commonDenom = x.den * y.den
-        val newNum = (x.num * y.den) + (y.num * x.den)
-        Fraction(newNum, commonDenom).reduce
-      }
+  def plus(x: Fraction, y: Fraction, reduce: Boolean): Fraction = {
+    val commonDenom = x.den * y.den
+    val newNum = (x.num * y.den) + (y.num * x.den)
+    val rawResult = Fraction(newNum, commonDenom)
+    if (reduce) rawResult.reduce else rawResult
+  }
 
-      override def minus(x: Fraction, y: Fraction): Fraction = {
-        val commonDenom = x.den * y.den
-        val newNum = (x.num * y.den) - (y.num * x.den)
-        Fraction(newNum, commonDenom).reduce
-      }
+  def minus(x: Fraction, y: Fraction, reduce: Boolean): Fraction = {
+    val commonDenom = x.den * y.den
+    val newNum = (x.num * y.den) - (y.num * x.den)
+    val rawResult = Fraction(newNum, commonDenom)
+    if (reduce) rawResult.reduce else rawResult
+  }
 
-      override def times(x: Fraction, y: Fraction): Fraction = Fraction(x.num * y.num, x.den * y.den).reduce
+  def times(x: Fraction, y: Fraction, reduce: Boolean): Fraction = {
+    val rawResult = Fraction(x.num * y.num, x.den * y.den)
+    if (reduce) rawResult.reduce else rawResult
+  }
 
-      override def negate(x: Fraction): Fraction = Fraction(-x.num, x.den)
+  implicit val fractionIsNumeric: Numeric[Fraction] = new Numeric[Fraction] {
 
-      override def fromInt(x: Int): Fraction = Fraction(x, 1)
+    override def plus(x: Fraction, y: Fraction): Fraction = Fraction.plus(x, y, reduce = true)
 
-      override def toInt(x: Fraction): Int = (x.num / x.den).toInt
+    override def minus(x: Fraction, y: Fraction): Fraction = Fraction.minus(x, y, reduce = true)
 
-      override def toLong(x: Fraction): Long = (x.num / x.den).toLong
+    override def times(x: Fraction, y: Fraction): Fraction = Fraction.times(x, y, reduce = true)
 
-      override def toFloat(x: Fraction): Float = (x.num / x.den).toFloat
+    override def negate(x: Fraction): Fraction = Fraction(-x.num, x.den)
 
-      override def toDouble(x: Fraction): Double = (x.num / x.den).toDouble
+    override def fromInt(x: Int): Fraction = Fraction(x, 1)
 
-      override def compare(x: Fraction, y: Fraction): Int = {
-        val xNum = x.num * y.den
-        val yNum = y.num * x.den
-        xNum.compareTo(yNum)
-      }
+    override def toInt(x: Fraction): Int = (x.num / x.den).toInt
+
+    override def toLong(x: Fraction): Long = (x.num / x.den).toLong
+
+    override def toFloat(x: Fraction): Float = (x.num / x.den).toFloat
+
+    override def toDouble(x: Fraction): Double = (x.num / x.den).toDouble
+
+    override def compare(x: Fraction, y: Fraction): Int = {
+      val xNum = x.num * y.den
+      val yNum = y.num * x.den
+      xNum.compareTo(yNum)
     }
+  }
 }
