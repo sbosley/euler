@@ -13,8 +13,14 @@ case class Fraction(num: BigInt, den: BigInt) {
   def *(n: Long): Fraction = this * Fraction.longToFraction(n)
   def invert: Fraction = Fraction(den, num)
   def reduce: Fraction = {
-    val divisor = gcd(num.abs, den)
-    Fraction(num.signum * num / divisor, den / divisor)
+    if (num < 0 && den < 0) {
+      Fraction(num.abs, den.abs).reduce
+    } else if (den < 0 && num > 0) {
+      Fraction(-num, den.abs).reduce
+    } else {
+      val divisor = gcd(num.abs, den)
+      Fraction(num / divisor, den / divisor)
+    }
   }
 }
 
@@ -22,6 +28,9 @@ object Fraction {
 
   implicit def intToFraction(n: Int): Fraction = Fraction(n, 1)
   implicit def longToFraction(n: Long): Fraction = Fraction(n, 1)
+
+  def apply(n: Int): Fraction = Fraction(n, 1)
+  def apply(n: Long): Fraction = Fraction(n, 1)
 
   def plus(x: Fraction, y: Fraction, reduce: Boolean): Fraction = {
     val commonDenom = x.den * y.den
