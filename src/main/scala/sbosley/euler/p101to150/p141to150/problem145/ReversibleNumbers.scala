@@ -1,7 +1,9 @@
 package sbosley.euler.p101to150.p141to150.problem145
 
+import sbosley.euler.util.Parallelize
+
 import scala.annotation.tailrec
-import scala.concurrent.{Await, Future, duration}
+import scala.concurrent.{Await, duration}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 
@@ -11,23 +13,11 @@ object ReversibleNumbers {
   private val max = 100000000L
 
   def main(args: Array[String]): Unit = {
-    val rangeFutures = getRangeFuturesForCores
-    val resultFuture = Future.sequence(rangeFutures).map(_.sum)
+    // Doing this sequentially takes a while, but it's easy to parallelize and runs quickly on 8 cores
+    val resultFuture = Parallelize(1L until max) { range =>
+      range.count(isReversible)
+    }.map(_.sum)
     println(Await.result(resultFuture, Duration(60, duration.SECONDS)))
-  }
-
-  // Doing this sequentially takes a while, but it's easy to parallelize and runs quickly on 8 cores
-  private def getRangeFuturesForCores: Seq[Future[Int]] = {
-    val availableCores = Runtime.getRuntime.availableProcessors
-    val rangeSize = max / availableCores
-    (1 to availableCores).map { n =>
-      (n - 1) * rangeSize until n * rangeSize
-    }.map { range =>
-      println(range)
-      Future {
-        range.count(isReversible)
-      }
-    }
   }
 
   private def isReversible(n: Long): Boolean = {
