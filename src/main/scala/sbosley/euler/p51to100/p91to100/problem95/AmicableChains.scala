@@ -19,7 +19,7 @@ object AmicableChains {
     println(result)
   }
 
-  private val divisorSum = Memoize { n: Int => Primes.properDivisors(n, Some(primes)).sum }
+  private val divisorSum = Memoize { (n: Int) => Primes.properDivisors(n, Some(primes)).sum }
 
   @tailrec
   private def getAmicableChain(n: Int, originalItem: Int, elems: Set[Int]): Option[Set[Int]] = {

@@ -2,3 +2,10 @@
 *.swp
 .idea/
 target/
+.bloop/
+.bsp/
+.metals/
+.vscode/
+project/project/
+project/metals.sbt/
+

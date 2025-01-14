@@ -128,4 +128,8 @@ object MathHelpers {
     import Numeric.Implicits._
     (fSeq.product * n).toInt()
   }
+
+  def choose(n: Long, k: Long): BigInt = {
+    factorial(n) / (factorial(k) * factorial(n - k))
+  }
 }

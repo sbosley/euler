@@ -41,7 +41,7 @@ object HarshadNumbers {
   }
 
   private def findSolutionsFromBase(numbers: Seq[RightTruncatableHarshadNumber]): Set[Long] = {
-    numbers.filter(isStrongHarshadNumber).flatMap(findPrimesForStrongRightTruncatableHarshadNumber)(collection.breakOut)
+    numbers.filter(isStrongHarshadNumber).flatMap(findPrimesForStrongRightTruncatableHarshadNumber).to(Set)
   }
 
   private def isStrongHarshadNumber(rthn: RightTruncatableHarshadNumber): Boolean = {

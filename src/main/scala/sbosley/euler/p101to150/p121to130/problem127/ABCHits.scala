@@ -9,7 +9,7 @@ object ABCHits {
   private val max = 120000
   private val primes = Primes.primesToMax(max + 100)
 
-  private val memoizedPrimeFactorProducts = Memoize { n: Int =>
+  private val memoizedPrimeFactorProducts = Memoize { (n: Int) =>
     Primes.primeFactors(n, Some(primes)).keySet.map(_.toLong).product
   }
 

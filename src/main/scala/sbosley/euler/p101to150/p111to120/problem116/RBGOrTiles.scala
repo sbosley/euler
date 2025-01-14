@@ -17,7 +17,7 @@ object RBGOrTiles {
   }
 
   val countTileArrangements: ((Int, Int)) => Long = {
-    Memoize { x: (Int, Int) =>
+    Memoize { (x: (Int, Int)) =>
       countTileArrangementsInternal(x._1, x._2)
     }
   }
